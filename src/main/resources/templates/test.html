@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging-compat.js"></script>
+
+</head>
+<body>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAJ5_3y7cH9cVwDSNiuPFfFNZ-qbgd82qs",
+        authDomain: "notificationtest-f0e2f.firebaseapp.com",
+        projectId: "notificationtest-f0e2f",
+        storageBucket: "notificationtest-f0e2f.firebasestorage.app",
+        messagingSenderId: "866056695770",
+        appId: "1:866056695770:web:a77038925351014ffe5ae3",
+        measurementId: "G-NNR7PP58WJ"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const messaging=firebase.messaging();
+    Notification.requestPermission()
+        .then(permission=>{
+            if ((permission ==="granted")){
+                messaging.getToken({
+                    vapidKey:"BAdo7pbAA3833MW9ci5IzIzrgwRltGmMnwC9fUKF_n6HrfS_IwfMqHmUU4QKHua7NzcBXi4EciI9T0lRyBOze78"
+                })
+                    .then(token=>{
+                        console.log(token)
+                    });
+            }else {
+                console.log("access not fund")
+            }
+        });
+
+</script>
+</body>
+</html>
